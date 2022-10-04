@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Session;
 
@@ -26,8 +27,9 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('student.form');
+    {   
+        $subject = new Student();
+        return view('student.form')->with('subject',$subject->query_subjectall());
     }
 
     /**
@@ -42,8 +44,12 @@ class StudentController extends Controller
             'name_student' => 'required|max:15',
             'address' => 'required|string',
             'phone_number' => 'required|integer',
-            'age' => 'required|integer'
+            'age' => 'required|integer',
+            /*'subject_id' => 'required|integer',
+            'student_id' => 'id',*/
         ]);
+
+        /*$detail = Detail::create($request->except('name_student','address','phone_number','age'));*/
         $student = Student::create($request->only('name_student','address','phone_number','age'));
         Session::flash('mensaje','Estudiante Creado con Exito');
         return redirect()->route('student.index');

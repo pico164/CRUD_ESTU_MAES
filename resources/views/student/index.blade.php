@@ -26,6 +26,8 @@
                         <td>{{ $studentdetail->address }}</td>
                         <td>{{ $studentdetail->phone_number }}</td>
                         <td>{{ $studentdetail->age }}</td>
+                        <td>{{ '' }}</td>
+                        <td>{{ '' }}</td>
                         <td>
                              <a href="{{ route('student.edit', $studentdetail) }}" class="btn btn-warning">Editar</a>
                              <form action="{{ route('student.destroy', $studentdetail) }}" method="POST" class="d-inline">

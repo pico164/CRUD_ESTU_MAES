@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Subject;
-use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\facades\Session;
 
@@ -18,8 +16,8 @@ class SubjectController extends Controller
     public function index()
     {   
         $subject = Subject::paginate(5);
-        $teacher = Teacher::join("subjects","subjects.teacher_id", "=", "teachers.id")->select("teachers.name_teacher")->get();
-        return view('subject.index')->with('subject',$subject)->with('Cteacher',$teacher);
+        $teacher = new Subject();
+        return view('subject.index')->with('subject',$subject)->with('Cteacher',$teacher->query_teacher());
     }
 
     /**
@@ -29,8 +27,8 @@ class SubjectController extends Controller
      */
     public function create()
     {   
-        $teacher_subject = Teacher::all();
-        return view('subject.form')->with('teacher',$teacher_subject);
+        $teacher_subject = new Subject();
+        return view('subject.form')->with('teacher',$teacher_subject->query_teacherall());
     }
 
     /**
@@ -68,8 +66,8 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Subject $subject)
-    {   $teacher_subject = Teacher::all();
-        return view('subject.form')->with('subject',$subject)->with('teacher',$teacher_subject);
+    {   $teacher_subject = new Subject();
+        return view('subject.form')->with('subject',$subject)->with('teacher',$teacher_subject->query_teacherall());
     }
 
     /**

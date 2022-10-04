@@ -51,6 +51,14 @@
                 @enderror
             </div>
 
+            <label for="subject_id" class="form-label">Asignatura</label>
+            <select name="subject_id" id="subject_id" class="form-control">
+                @foreach ($subject as $nombre)
+                    <option value="{{ $nombre->id }}" {{ old('teacher_id') == $nombre->id ? 'selected' : ''}}>{{ $nombre->name_subject }}</option>
+                @endforeach
+            </select>
+
+
             @if (isset($student))
                 <button type="submit" class="btn btn-success">Editar estudiante</button>
             @else

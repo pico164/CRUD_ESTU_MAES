@@ -22,7 +22,9 @@
                         <td>{{ $subjectdetail->name_subject }}</td>
                         <td>{{ $subjectdetail->curse }}</td>
                         @foreach ($Cteacher as $detalle)
-                            <td>{{ $detalle->name_teacher }}</td>
+                            @if ($subjectdetail->teacher_id==$detalle->id)
+                                <td>{{ $detalle->name_teacher }}</td>
+                            @endif
                         @endforeach
                         
                         <td>
