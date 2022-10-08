@@ -1,5 +1,12 @@
-@extends('thema.base')
+@extends('layouts.app')
+
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                
+
     <div class="container py-5 text-center">
         <h1>Aplicativo Cursos</h1>
         <a href="{{ route('subject.create') }}" class="btn btn-primary">Crear Asignatura</a>
@@ -15,6 +22,7 @@
                 <th>Asignatura</th>
                 <th>Curso</th>
                 <th>Maestro</th>
+                <th>Acciones</th>
             </thead>
             <tbody>
                 @forelse ($subject as $subjectdetail)
@@ -48,4 +56,9 @@
             {{ $subject->links() }}    
         @endif
     </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

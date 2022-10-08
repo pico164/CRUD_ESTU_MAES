@@ -6,9 +6,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="container py-5 text-center">
+                <div class="py-5 text-center">
                     <h1>Aplicativo Cursos</h1>
-                    <a href="{{ route('student.create') }}" class="btn btn-primary">Crear Estudiantes</a>
+                    <a href="{{ route('detail.create') }}" class="btn btn-primary">Matriculas</a>
             
                     @if (Session::has('mensaje'))
                         <div class="alert alert-info my-5">
@@ -18,15 +18,14 @@
             
                     <table class="table">
                         <thead>
+                            <th>Asignatura</th>
+                            <th>Nombre del Maestro</th>
                             <th>Estudiantes</th>
-                            <th>Direccion</th>
-                            <th>Telefeono</th>
-                            <th>Edad</th>
                             <th>Acciones</th>
                         </thead>
                         <tbody>
-            
-                            @forelse ($students as $studentdetail)
+            {{--  
+                            @forelse ($details as $detailsM)
                                 <tr>
                                     <td>{{ $studentdetail->name_student }}</td>
                                     <td>{{ $studentdetail->address }}</td>
@@ -49,9 +48,10 @@
                             
                         </tbody>
                     </table>
-                    @if ($students->count())
-                        {{ $students->links() }}    
+                    @if ($details->count())
+                        {{ $details->links() }}    
                     @endif
+                    --}}
                 </div>
             </div>
         </div>

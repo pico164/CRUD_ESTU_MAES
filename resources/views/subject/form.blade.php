@@ -1,5 +1,10 @@
-@extends('thema.base')
+@extends('layouts.app')
 @section('content')
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            
     <div class="container py-5 text-center">
         @if (isset($subject))
             <h1>Editar Asignaturas</h1>
@@ -49,5 +54,7 @@
             @endif
         </form>
     </div>
-    
+        </div>
+    </div>
+</div>    
 @endsection

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Detail;
 use Illuminate\Http\Request;
+use Illuminate\Support\facades\Session;
 
 class DetailController extends Controller
 {
@@ -14,7 +14,8 @@ class DetailController extends Controller
      */
     public function index()
     {
-        //
+        $detail=Detail::paginate(5);
+        return view('detail.index')->with('details',$detail);
     }
 
     /**
@@ -23,8 +24,9 @@ class DetailController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $namesubject = new Detail();
+        return view('detail.form')->with('detail',$namesubject->query_subjectall())->with('name',$namesubject->query_studentall());
     }
 
     /**
@@ -35,7 +37,13 @@ class DetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'student_id' => 'required|max:15',
+            'subject_id' => 'required|integer'
+        ]);
+        $detail = Detail::create($request->only('student_id','subject_id'));
+        Session::flash('mensaje','Matricula Creada con Exito');
+        return redirect()->route('detail.index');
     }
 
     /**

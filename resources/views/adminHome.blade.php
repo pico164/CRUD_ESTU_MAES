@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="container py-5 text-center">
+                        <h1>Aplicativo Cursos</h1>
+                        <a href="{{ route('student.index') }}" class="btn btn-primary">Estudiantes</a>
+                        <a href="{{ route('teacher.index') }}" class="btn btn-primary">Maestros</a>
+                        <a href="{{ route('subject.index') }}" class="btn btn-primary">Materias</a>
+                        <a href="{{ route('detail.index') }}" class="btn btn-primary">Matriculas</a>
+                    </div>
                 </div>
             </div>
         </div>

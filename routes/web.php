@@ -3,6 +3,7 @@
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\DetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('student', StudentController::class);
 Route::resource('teacher', TeacherController::class);
 Route::resource('subject', SubjectController::class);
+Route::resource('detail',  DetailController::class);
 
 Auth::routes();
 
