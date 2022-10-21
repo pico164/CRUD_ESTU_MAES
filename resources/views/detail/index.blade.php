@@ -15,25 +15,31 @@
                             {{ Session::get('mensaje') }}
                         </div>
                     @endif
+
+                    <form class="form-inline">
+                        @csrf
+                        <div class="py-4">
+                            <label for="subject_id" class="form-label">Nombre de la Asignatura</label>
+                            <select name="subject_id" id="subject_id" class="form-control">
+                                @foreach ($detail as $nombre)
+                                    <option value="{{ $nombre->id }}" {{ old('subject_id') == $nombre->id ? 'selected' : ''}}>{{ $nombre->name_subject }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                            <button type="submit" class="btn btn-success">Consultar</button>
+                    </form>
             
                     <table class="table">
                         <thead>
-                            <th>Asignatura</th>
-                            <th>Nombre del Maestro</th>
                             <th>Estudiantes</th>
                             <th>Acciones</th>
                         </thead>
                         <tbody>
-            {{--  
-                            @forelse ($details as $detailsM)
+                            @forelse ($modelo as $students)
                                 <tr>
-                                    <td>{{ $studentdetail->name_student }}</td>
-                                    <td>{{ $studentdetail->address }}</td>
-                                    <td>{{ $studentdetail->phone_number }}</td>
-                                    <td>{{ $studentdetail->age }}</td>
+                                    <td>{{ $students->name_students }}</td>
                                     <td>
-                                         <a href="{{ route('student.edit', $studentdetail) }}" class="btn btn-warning">Editar</a>
-                                         <form action="{{ route('student.destroy', $studentdetail) }}" method="POST" class="d-inline">
+                                         <form action="{{ route('detail.destroy', $studentdetail) }}" method="POST" class="d-inline">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro de eliminar este estudiante?')">Eliminar</button>
@@ -45,13 +51,11 @@
                                     <td colspan="3">No hay registros</td>
                                 </tr>
                             @endforelse
-                            
                         </tbody>
                     </table>
-                    @if ($details->count())
-                        {{ $details->links() }}    
+                    @if ($modelo->count())
+                        {{ $details->links() }}
                     @endif
-                    --}}
                 </div>
             </div>
         </div>

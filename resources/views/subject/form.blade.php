@@ -33,7 +33,7 @@
             <label for="teacher_id" class="form-label">Nombre del Maestro</label>
             <select name="teacher_id" id="teacher_id" class="form-control">
                 @foreach ($teacher as $nombre)
-                    <option value="{{ $nombre->id }}" {{ old('teacher_id') == $nombre->id ? 'selected' : ''}}>{{ $nombre->name_teacher }}</option>
+                    <option value="{{ $nombre->id }}" {{ old('teacher_id') == $nombre->id ? 'selected' : '' }}>{{ $nombre->name_teacher }}</option>
                 @endforeach
             </select>
 

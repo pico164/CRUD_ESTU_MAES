@@ -20,4 +20,9 @@ class Detail extends Model
         return Student::all();
     }
 
+    public function valor_students($valor){
+        $studiantesID = Detail::where('subject_id','=',$valor)->get();
+        return Student::where('id','=',$studiantesID->get('student_id'));
+    }
+
 }

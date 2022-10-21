@@ -12,10 +12,12 @@ class DetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $detail=Detail::paginate(5);
-        return view('detail.index')->with('details',$detail);
+        $namesubject = new Detail();
+        $valor = $request->get('subject_id');
+        return view('detail.index')->with('details',$detail)->with('detail',$namesubject->query_subjectall())->with('modelo',$namesubject->valor_students($valor));
     }
 
     /**
